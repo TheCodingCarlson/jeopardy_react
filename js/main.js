@@ -1,8 +1,17 @@
+$.get('http://jservice.io/api/clues', function(data) {
+	for(var i = 0; i < data.length; i++) {
+		if(data[i].question !== '') {
+			console.log(data[i].question);
+		}
+	}
+});
+
+
 var MyApp = React.createClass({
 	render: function() {
 		return (
-			<div className='well'>
-				<h1>Hello World</h1>
+			<div>
+				<h1>Jeopardy</h1>
 			</div>
 		);
 	}
