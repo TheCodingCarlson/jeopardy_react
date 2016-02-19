@@ -25,24 +25,25 @@ var MyApp = React.createClass({
 var ResultsList = React.createClass({
 	getInitialState: function() {
 		return {
-			question: '',
-			answer: ''
+			trivia: []
 		};
 	},
 	componentDidMount: function() {
+		var info = [];
 		this.serverRequest = $.get('http://jservice.io/api/random?count=100', function(data) {
-			var first = data[0];
+			for(var i = 0; i < data.length; i++) {
+				var question = [data[i].question, data[i].answer];
+				info.push(question);
+			}	
 			this.setState({
-				question: first.question,
-				answer: first.answer
+				trivia: info
 			});
 		}.bind(this));
 	},
 	render: function() {
 		return (
 			<div>
-				{this.state.question}
-				{this.state.answer}
+				{this.state.trivia}
 			</div>
 		);
 	}
