@@ -15,7 +15,7 @@ var ResultsList = React.createClass({
 			trivia: []
 		};
 	},
-	componentDidMount: function() {
+	componentWillMount: function() {
 		var info = [];
 		this.serverRequest = $.get('http://jservice.io/api/random?count=100', function(data) {
 			for(var i = 0; i < data.length; i++) {
@@ -34,7 +34,7 @@ var ResultsList = React.createClass({
 			return <Question key={idx} data={question} />
 		});
 		return (
-			<div>
+			<div id='slider' className='swipe'>
 				{questions}
 			</div>
 		);
@@ -43,20 +43,19 @@ var ResultsList = React.createClass({
 
 var Question = React.createClass({
 	componentDidMount: function() {
-		this.hammer = Hammer(this.getDOMNode());
-		this.hammer.on('swipeleft', function() {
-			console.log('worked');
-		});
+	   window.mySwipe = Swipe(document.getElementById('slider'));
+
 	},
 	render: function() {
 		var question = this.props.data;
 		return (
-			<div className='well'>
-				<h2>{question[0]}</h2>
+			<div className='swipe-wrap well'>
+				<div><h2>{question[0]}</h2></div>
+				<div><h2>{question[1]}</h2></div>
 			</div>
 		);
 	}
 });
 
 
-ReactDOM.render(<MyApp />, document.getElementById('sportsApp'));
+ReactDOM.render(<MyApp />, document.getElementById('triviaApp'));
