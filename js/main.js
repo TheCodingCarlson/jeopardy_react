@@ -34,7 +34,7 @@ var ResultsList = React.createClass({
 			return <Question key={idx} data={question} />
 		});
 		return (
-			<div id='slider' className='swipe'>
+			<div>
 				{questions}
 			</div>
 		);
@@ -43,15 +43,18 @@ var ResultsList = React.createClass({
 
 var Question = React.createClass({
 	componentDidMount: function() {
-	   window.mySwipe = Swipe(document.getElementById('slider'));
+		window.mySwipe = Swipe(document.getElementById(this._reactInternalInstance._rootNodeID));
 
 	},
 	render: function() {
 		var question = this.props.data;
+		var id = this._reactInternalInstance._rootNodeID;
 		return (
-			<div className='swipe-wrap well'>
-				<div><h2>{question[0]}</h2></div>
-				<div><h2>{question[1]}</h2></div>
+			<div id={id} className='swipe'>
+				<div className='swipe-wrap well'>
+					<div><h2>{question[0]}</h2></div>
+					<div><h2>{question[1]}</h2></div>
+				</div>
 			</div>
 		);
 	}
