@@ -3,7 +3,7 @@ var MyApp = React.createClass({
 		return (
 			<div>
 				<img id='logo'  className='img-responsive' src='/assets/logo.jpg' />
-				<ResultsList />	
+				<ResultsList />
 			</div>
 		);
 	}
@@ -41,7 +41,7 @@ var ResultsList = React.createClass({
 			return <Question key={idx} data={question} />
 		});
 		return (
-			<div className='main'>
+			<div>
 				{questions}
 			</div>
 		);
