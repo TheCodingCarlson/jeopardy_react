@@ -2,8 +2,8 @@ var MyApp = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<h1>Jeopardy</h1>
-				<ResultsList />		
+				<img id='logo'  className='img-responsive' src='/assets/logo.jpg' />
+				<ResultsList />	
 			</div>
 		);
 	}
@@ -13,7 +13,7 @@ var ResultsList = React.createClass({
 	getInitialState: function() {
 		return {
 			trivia: []
-		};
+		}
 	},
 	componentWillMount: function() {
 		var info = [];
@@ -29,12 +29,19 @@ var ResultsList = React.createClass({
 			});
 		}.bind(this));
 	},
+	componentDidMount: function() {
+		window.onscroll = function(ev) {
+    		if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+    			console.log('bottom!');
+    		}
+		}
+	},
 	render: function() {
 		var questions = this.state.trivia.map(function(question, idx) {
 			return <Question key={idx} data={question} />
 		});
 		return (
-			<div>
+			<div className='main'>
 				{questions}
 			</div>
 		);
@@ -51,9 +58,17 @@ var Question = React.createClass({
 		var id = this._reactInternalInstance._rootNodeID;
 		return (
 			<div id={id} className='swipe'>
-				<div className='swipe-wrap well'>
-					<div><h2>{question[0]}</h2></div>
-					<div><h2>{question[1]}</h2></div>
+				<div className='swipe-wrap'>
+					<div className='well'>
+						<span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+						<h3>{question[0]}</h3>
+						<span className="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					</div>
+					<div className='well'>
+						<span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+						<h3>{question[1]}</h3>
+						<span className="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					</div>
 				</div>
 			</div>
 		);
