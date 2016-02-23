@@ -2,7 +2,7 @@ var MyApp = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<img id='logo'  className='img-responsive' src='/assets/logo.jpg' />
+				<img id='logo'  className='img-responsive' src='/assets/logo.jpg' />	
 				<ResultsList />
 			</div>
 		);
@@ -12,8 +12,12 @@ var MyApp = React.createClass({
 var ResultsList = React.createClass({
 	getInitialState: function() {
 		return {
-			trivia: []
+			trivia: [],
+			message: 'Getting Trivia...'
 		}
+	},
+	reset: function() {
+		location.reload();
 	},
 	componentWillMount: function() {
 		var info = [];
@@ -25,16 +29,10 @@ var ResultsList = React.createClass({
 				}
 			}	
 			this.setState({
-				trivia: info
+				trivia: info,
+				message: ''
 			});
 		}.bind(this));
-	},
-	componentDidMount: function() {
-		window.onscroll = function(ev) {
-    		if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-    			console.log('bottom!');
-    		}
-		}
 	},
 	render: function() {
 		var questions = this.state.trivia.map(function(question, idx) {
@@ -42,7 +40,9 @@ var ResultsList = React.createClass({
 		});
 		return (
 			<div>
+				<h2>{this.state.message}</h2>
 				{questions}
+				<button className='btn btn-default' onClick={this.reset}>Reset</button>
 			</div>
 		);
 	}
