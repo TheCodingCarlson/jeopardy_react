@@ -2,7 +2,7 @@ var MyApp = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<img id='logo'  className='img-responsive' src='assets/logo.jpg' />	
+				<img id='logo'  className='img-responsive' src='assets/logo.png' />	
 				<ResultsList />
 			</div>
 		);
