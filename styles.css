@@ -14,12 +14,19 @@ h3 {
 .well {
 	text-align: center;
 	background: linear-gradient(#191eb9, #c820b5);
+	border-color: #fca42d;
 }
 .glyphicon-chevron-left {
 	float: left;	
 }
 .glyphicon-chevron-right {
 	float: right;
+}
+.btn,
+.btn:hover {
+	background-color: #191eb9;
+	color: #fca42d;
+	border-color: #c820b5;
 }
 .swipe {
   overflow: hidden;

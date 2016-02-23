@@ -13,7 +13,7 @@ var ResultsList = React.createClass({
 	getInitialState: function() {
 		return {
 			trivia: [],
-			message: 'Getting Trivia...'
+			message: 'Fetching Trivia...'
 		}
 	},
 	reset: function() {
@@ -42,7 +42,7 @@ var ResultsList = React.createClass({
 			<div>
 				<h2>{this.state.message}</h2>
 				{questions}
-				<button className='btn btn-default' onClick={this.reset}>Reset</button>
+				<button className='btn btn-default btn-lg' onClick={this.reset}>Reset</button>
 			</div>
 		);
 	}
@@ -74,6 +74,5 @@ var Question = React.createClass({
 		);
 	}
 });
-
 
 ReactDOM.render(<MyApp />, document.getElementById('triviaApp'));
