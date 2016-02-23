@@ -27,6 +27,7 @@ h3 {
 	background-color: #191eb9;
 	color: #fca42d;
 	border-color: #c820b5;
+	padding: 10px;
 }
 .swipe {
   overflow: hidden;
