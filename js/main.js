@@ -2,7 +2,7 @@ var MyApp = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<img id='logo'  className='img-responsive' src='assets/logo.jpg' />	
+				<img id='logo'  className='img-responsive' src='assets/logo.png' />	
 				<ResultsList />
 			</div>
 		);
@@ -19,7 +19,7 @@ var ResultsList = React.createClass({
 	reset: function() {
 		location.reload();
 	},
-	componentWillMount: function() {
+	getData: function() {
 		var info = [];
 		this.serverRequest = $.get('http://jservice.io/api/random?count=100', function(data) {
 			for(var i = 0; i < data.length; i++) {
@@ -33,6 +33,9 @@ var ResultsList = React.createClass({
 				message: ''
 			});
 		}.bind(this));
+	},
+	componentWillMount: function() {
+		this.getData();
 	},
 	render: function() {
 		var questions = this.state.trivia.map(function(question, idx) {
