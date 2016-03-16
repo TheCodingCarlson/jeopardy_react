@@ -3,7 +3,11 @@ var MyApp = React.createClass({
 		return (
 			<div>
 				<img id='logo'  className='img-responsive' src='assets/logo.png' />	
-				<ResultsList />
+				<Infinite containerHeight={window.innerHeight} elementHeight={450}>
+					<ResultsList />
+					<ResultsList />
+					<ResultsList />
+				</Infinite>
 			</div>
 		);
 	}
@@ -21,7 +25,7 @@ var ResultsList = React.createClass({
 	},
 	getData: function() {
 		var info = [];
-		this.serverRequest = $.get('http://jservice.io/api/random?count=100', function(data) {
+		this.serverRequest = $.get('http://jservice.io/api/random?count=10', function(data) {
 			for(var i = 0; i < data.length; i++) {
 				if(data[i].question && data[i].answer) {
 					var question = [data[i].question, data[i].answer];
