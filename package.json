@@ -1,0 +1,18 @@
+{
+  "name": "jeopardy_react",
+  "version": "1.0.0",
+  "description": "###Basic Info A small project I made to familiarize myself with the basic concepts of React.js. I used the [jService](http://jservice.io/) API to generate the random question data and also used [Swipe](https://github.com/thebird/Swipe) to enable swiping back and forth between questions and answers. Swiping only works on mobile devices.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheCodingCarlson/microgroove_test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheCodingCarlson/microgroove_test/issues"
+  },
+  "homepage": "https://github.com/TheCodingCarlson/microgroove_test#readme"
+}
