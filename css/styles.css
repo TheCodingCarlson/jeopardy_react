@@ -22,6 +22,13 @@ h3 {
 .glyphicon-chevron-right {
 	float: right;
 }
+.btn,
+.btn:hover {
+	background-color: #191eb9;
+	color: #fca42d;
+	border-color: #c820b5;
+	margin-bottom: 10px;
+}
 .swipe {
   overflow: hidden;
   visibility: hidden;
