@@ -1,3 +1,5 @@
+// import ParallaxComponent from 'react-parallax-component';
+
 var MyApp = React.createClass({
 	render: function() {
 		return (
