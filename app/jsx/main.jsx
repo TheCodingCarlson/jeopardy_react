@@ -1,4 +1,6 @@
 // import ParallaxComponent from 'react-parallax-component';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 var MyApp = React.createClass({
 	render: function() {
