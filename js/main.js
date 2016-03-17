@@ -43,7 +43,7 @@ var ResultsList = React.createClass({
 		});
 		setTimeout(function() {
 			that.getData(that.buildElements);
-		}, 2500);
+		}, 1500);
 
 		
 	},
