@@ -1,12 +1,13 @@
-// import ParallaxComponent from 'react-parallax-component';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Infinite from 'react-infinite';
+import Swipe from 'swipe-js';
 
 var MyApp = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<img id='logo'  className='img-responsive' src='assets/logo.png' />
+				<img src='assets/logo.png' className='img-responsive' />
 				<ResultsList />
 			</div>
 		);
@@ -33,23 +34,19 @@ var ResultsList = React.createClass({
 				newQuestions.push(<Question key={count} data={question}/>);
 			}
 		}
-		
 		this.setState({
 			isInfiniteLoading: false,
 			trivia: this.state.trivia.concat(newQuestions)
 		})
 	},
 	getMoreData: function() {
-		console.log('infinite load');
 		var that = this;
 		this.setState({
 			isInfiniteLoading: true
 		});
 		setTimeout(function() {
 			that.getData(that.buildElements);
-		}, 1500);
-
-		
+		}, 1500);	
 	},
 	questionInfiniteLoad: function() {
 		return <div className='infinite-list-item'><h1>Loading...</h1></div>;
@@ -78,32 +75,45 @@ var Question = React.createClass({
 			height: 300
 		}
 	},
+	textTransform: function(divID) {
+		$(window).scroll(function() {
+			var scroll = $(window).scrollTop();
+			var offset = $(divID).offset().top;
+			var height = $(divID).height();
+
+			if(scroll > offset - height) {
+				$(divID).find('h3').addClass('text-transition');
+				
+			}
+		});
+	},
 	componentDidMount: function() {
 		window.mySwipe = Swipe(document.getElementById(this._reactInternalInstance._rootNodeID));
+		this.textTransform(document.getElementById(this._reactInternalInstance._rootNodeID));
+	},
+	componentWillUnmount:function() {
+	      var el = document.getElementById(this._reactInternalInstance._rootNodeID);
+	      $(el).removeClass('text-transition');
 	},
 	render: function() {
 		var question = this.props.data;
 		var id = this._reactInternalInstance._rootNodeID;
 		return (
-			// <ParallaxComponent speed="0.003"
-   //                 width="300"
-   //                 top="40%"
-   //                 left="100">
 			<div id={id} className='swipe'>
 				<div className='swipe-wrap'>
-					<div className='well' style={{ height: this.props.height }}>
+						<div className='well' style={{ height: this.props.height }}>
 						<span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-						<h3>{question[0]}</h3>
 						<span className="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-					</div>
-					<div className='well' style={{ height: this.props.height }}>
-						<span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-						<h3>{question[1]}</h3>
-						<span className="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-					</div>
+							<h3>{question[0]}</h3>
+						</div> 
+						<div className='well' style={{ height: this.props.height }}>
+							<span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+							<span className="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+							<h3>{question[1]}</h3>
+						</div>
 				</div>
 			</div>
-			// </ParallaxComponent>
+			
 		);
 	}
 });

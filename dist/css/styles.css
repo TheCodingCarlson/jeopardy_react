@@ -4,33 +4,59 @@ body {
 	font-family: 'Lato', sans-serif;
 	color: #fca42d;
 }
+
 img {
 	border-radius: 3%;
 	margin-bottom: 15px;
 }
+
 h3 {
-	padding: 20px;
+	padding: 40px 20px 20px 20px;
 }
+
 .well {
 	text-align: center;
 	background: linear-gradient(#191eb9, #c820b5);
+	background-color: transparent;
 	border-color: #fca42d;
 }
+
+@keyframes slide-up {
+  from {
+    padding-top: 40px;
+   
+  }
+
+  to {
+    padding-top: 32px;
+    
+  }
+}
+
+.text-transition {
+	animation: 1.2s slide-up;
+	padding-top: 32px;
+}
+
 .glyphicon-chevron-left {
 	float: left;	
 }
+
 .glyphicon-chevron-right {
 	float: right;
 }
+
 .swipe {
   overflow: hidden;
   visibility: hidden;
   position: relative;
 }
+
 .swipe-wrap {
   overflow: hidden;
   position: relative;
 }
+
 .swipe-wrap > div {
   float:left;
   width:100%;
