@@ -83,10 +83,6 @@ var Question = React.createClass({
 		var question = this.props.data;
 		var id = this._reactInternalInstance._rootNodeID;
 		return (
-			// <ParallaxComponent speed="0.003"
-   //                 width="300"
-   //                 top="40%"
-   //                 left="100">
 			<div id={id} className='swipe'>
 				<div className='swipe-wrap'>
 					<div className='well' style={{ height: this.props.height }}>
@@ -101,7 +97,6 @@ var Question = React.createClass({
 					</div>
 				</div>
 			</div>
-			// </ParallaxComponent>
 		);
 	}
 });
