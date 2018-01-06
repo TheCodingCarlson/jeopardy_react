@@ -7,4 +7,4 @@ app.get('*', (req, res) => {
     res.sendFile(__dirname + '/dist/index.html');
 });
 
-app.listen(process.env.PORT || 3000, () => console.log('Suck it Trebek'));
+app.listen(process.env.PORT || 3000, () => console.log('Suck it Trebek!'));
